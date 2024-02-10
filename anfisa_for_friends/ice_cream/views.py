@@ -20,10 +20,12 @@ ice_cream_catalog = [
     },
 ]
 
+catalog_to_dict = {ice_cream['id']: ice_cream for ice_cream in ice_cream_catalog}
 
-def ice_cream_detail(request, pk):
+
+def ice_cream_detail(request, ice_cream_id):
     template = 'ice_cream/detail.html'
-    context = {'ice_cream': ice_cream_catalog[pk]}
+    context = {'ice_cream': catalog_to_dict[ice_cream_id]}
     return render(request, template, context)
 
 
